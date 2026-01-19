@@ -1,0 +1,64 @@
+```xml
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.madhub.tiktokscheduler">
+
+    <!-- 
+        Problem: The application requires specific permissions to perform its functions effectively.
+        Solution: Declare necessary permissions to enable network access and storage for content scheduling.
+    -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 
+        This permission solves the problem of accessing the internet to interact with TikTok's API,
+        enabling smooth content scheduling and management features.
+    -->
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- 
+        Addresses the challenge of storing scheduled content and logs on the device,
+        ensuring that users can manage their media files effectively.
+    -->
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.NoActionBar">
+
+        <!-- 
+            Problem: The app needs a main entry point for user interactions.
+            Solution: Register the MainActivity to handle user interface and app functionality.
+        -->
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 
+            Problem: Automation tasks need to run in the background for efficient scheduling.
+            Solution: Register AutomationService to handle all automated operations seamlessly.
+        -->
+        <service android:name=".AutomationService" 
+                 android:enabled="true"
+                 android:exported="false">
+            <!-- 
+                This service addresses the limitation of manual scheduling by providing a 
+                24/7 automated operation capability, allowing users to manage their content 
+                without constant oversight.
+            -->
+        </service>
+
+    </application>
+
+</manifest>
+```
+
+### Explanation:
+- **Permissions:** Permissions for internet and external storage are declared to allow the application to interact with TikTok's API and manage content effectively.
+- **Main Activity Registration:** The MainActivity is defined as the entry point for users, facilitating interaction with the scheduling features.
+- **Service Registration:** The AutomationService enables background operations, ensuring that tasks are automated and run continuously, which is essential for effective content management. 
+
+This configuration addresses real-world challenges in social media management, specifically for scheduling content on TikTok, and leverages MadHub's capabilities for a seamless user experience.
